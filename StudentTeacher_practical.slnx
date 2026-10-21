@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="part2/Authentication_API.Tests/Authentication_API.Tests.csproj" />
+  <Project Path="part2/Authentication_API/Authentication_API.csproj" />
+  <Project Path="part3/StudentTeacherPractical.Mvc/StudentTeacherPractical.Mvc.csproj" Id="c9d0cd6a-e246-4d89-808b-266c9cfcc8f2" />
+</Solution>
