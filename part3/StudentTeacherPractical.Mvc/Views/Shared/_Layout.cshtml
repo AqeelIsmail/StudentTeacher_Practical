@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+
+@{
+    var role = Context.Session.GetString("ApiRole");
+
+    var signedIn = !string.IsNullOrWhiteSpace(
+        Context.Session.GetString("ApiAuthCookie"));
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,16 +27,67 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                    <!-- Existing navigation links -->
                     <ul class="navbar-nav flex-grow-1">
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark"
+                               asp-area=""
+                               asp-controller="Home"
+                               asp-action="Index">Home</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark"
+                               asp-area=""
+                               asp-controller="Home"
+                               asp-action="Privacy">Privacy</a>
                         </li>
+
                     </ul>
+
+                    <!-- Login, Register and Logout -->
+                    <div class="d-flex align-items-center gap-2">
+
+                        @if (signedIn)
+                        {
+                            <span class="me-3">
+                                Logged in as @role
+                            </span>
+
+                            <form asp-controller="Account"
+                                  asp-action="Logout"
+                                  method="post">
+
+                                <button type="submit"
+                                        class="btn btn-outline-danger">
+                                    Logout
+                                </button>
+
+                            </form>
+                        }
+                        else
+                        {
+                            <a asp-controller="Account"
+                               asp-action="Login"
+                               class="btn btn-outline-primary">
+                                Login
+                            </a>
+
+                            <a asp-controller="Account"
+                               asp-action="Register"
+                               class="btn btn-primary">
+                                Register
+                            </a>
+                        }
+
+                    </div>
+
                 </div>
+
             </div>
         </nav>
     </header>

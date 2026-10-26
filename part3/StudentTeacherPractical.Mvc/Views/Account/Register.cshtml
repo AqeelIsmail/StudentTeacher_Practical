@@ -1,0 +1,193 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8 col-lg-7">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <h2 class="text-center mb-3">
+                        Create an Account
+                    </h2>
+
+                    <p class="text-muted text-center mb-4">
+                        Register as a Student or Teacher.
+                    </p>
+
+                    <!-- Registration Form -->
+                    <form asp-controller="Account"
+                          asp-action="Register"
+                          method="post">
+
+                        <!-- Display validation errors -->
+                        <div asp-validation-summary="All"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <!-- First Name -->
+                        <div class="mb-3">
+
+                            <label asp-for="FirstName"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="FirstName"
+                                   class="form-control"
+                                   placeholder="Enter your first name" />
+
+                            <span asp-validation-for="FirstName"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="mb-3">
+
+                            <label asp-for="LastName"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="LastName"
+                                   class="form-control"
+                                   placeholder="Enter your last name" />
+
+                            <span asp-validation-for="LastName"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+
+                            <label asp-for="Email"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="Email"
+                                   class="form-control"
+                                   placeholder="example@email.com" />
+
+                            <span asp-validation-for="Email"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+
+                            <label asp-for="Password"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="Password"
+                                   type="password"
+                                   class="form-control"
+                                   placeholder="Enter your password"
+                                   autocomplete="new-password" />
+
+                            <span asp-validation-for="Password"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Role Selection -->
+                        <div class="mb-3">
+
+                            <label asp-for="Role"
+                                   class="form-label">
+                            </label>
+
+                            <select asp-for="Role"
+                                    class="form-select">
+
+                                <option value="Student">Student</option>
+
+                                <option value="Teacher">Teacher</option>
+
+                            </select>
+
+                            <span asp-validation-for="Role"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Student Number -->
+                        <div class="mb-3">
+
+                            <label asp-for="StudentNumber"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="StudentNumber"
+                                   class="form-control"
+                                   placeholder="Complete if registering as Student" />
+
+                            <span asp-validation-for="StudentNumber"
+                                  class="text-danger">
+                            </span>
+
+                            <small class="text-muted">
+                                Complete this field if you selected Student.
+                            </small>
+
+                        </div>
+
+                        <!-- Employee Number -->
+                        <div class="mb-3">
+
+                            <label asp-for="EmployeeNumber"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="EmployeeNumber"
+                                   class="form-control"
+                                   placeholder="Complete if registering as Teacher" />
+
+                            <span asp-validation-for="EmployeeNumber"
+                                  class="text-danger">
+                            </span>
+
+                            <small class="text-muted">
+                                Complete this field if you selected Teacher.
+                            </small>
+
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid mt-4">
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Register
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
